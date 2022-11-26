@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
+import ContextProvider from "./context/DadosContext";
 import { GlobalStyle } from './globalStyle';
 import Root from './pages/Root';
 import Home from './pages/Home';
@@ -26,6 +27,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <GlobalStyle />
-    <RouterProvider router={router} />
+    <ContextProvider>
+      <RouterProvider router={router} />
+    </ContextProvider>
   </React.StrictMode>
 );

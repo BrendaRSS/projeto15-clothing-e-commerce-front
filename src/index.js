@@ -25,6 +25,17 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
+      },
+      {
+        path: '/produtos/:id',
+        element: <Product />,
+        loader: async({ params }) => {
+          return productLoader(params.id);
+        }
+      },
+      {
+        path: '/category',
+        element: <Category />
       }
     ]
   }

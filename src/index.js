@@ -13,6 +13,8 @@ import Home from './pages/Home';
 import Product from './pages/Product';
 import { productLoader } from './helpers/productLoader';
 import Category from './pages/Category';
+import SignUp from './pages/SignUp';
+import SignIn from './pages/SignIn';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
       {
         path: '/category',
         element: <Category />
+      },
+      {
+        path:'/sign-up',
+        element: <SignUp />
+      },
+      {
+        path:'/sign-in',
+        element: <SignIn />
       }
     ]
   }

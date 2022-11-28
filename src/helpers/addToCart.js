@@ -1,7 +1,7 @@
 export default function addToCart({ _id, category }, navigate) {
   if (!localStorage.getItem('Cart')) {
     localStorage.setItem('Cart', JSON.stringify({ items: [{ _id: _id }] }));
-    return navigate(`${process.env.REACT_APP_PRODUCTS_URI}${category}`, { replace: true });
+    return;
   }
 
   const cart = JSON.parse(localStorage.getItem('Cart'));
@@ -12,5 +12,5 @@ export default function addToCart({ _id, category }, navigate) {
 
   cart.items.push({ _id: _id });
   localStorage.setItem('Cart', JSON.stringify(cart));
-  return navigate(`/produtos/${category}`);
+  return;
 }

@@ -37,11 +37,11 @@ export default function Product() {
         <ProductPrice>
           R$ {price}
         </ProductPrice>
-        Tamanho
+        Tamanho:
         <ProductSize>
           {size}
         </ProductSize>
-        Cor
+        Cor:
         <ProductColor>
           {color}
         </ProductColor>

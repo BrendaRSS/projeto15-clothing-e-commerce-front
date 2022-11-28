@@ -10,7 +10,6 @@ import {
     ContainerProducts,
     Product
 } from "./styled"
-import Header from '../../components/Header';
 
 export default function Category() {
     const {
@@ -18,20 +17,15 @@ export default function Category() {
     } = useContext(DadosContext);
     const navigate = useNavigate();
 
-    function productSelected(id) {
-        alert(id);
-    }
-
     return (
         <ContainerCategory>
-            <Header />
             <IventarySelected>
                 <NameCategory>{categorySlected[0].category}</NameCategory>
                 <LineDecoration />
                 <ContainerProducts>
                     {categorySlected.map((p) => {
                         return (
-                            <Product onClick={() => productSelected(p._id)}>
+                            <Product onClick={() => navigate(`/produtos/${p._id}`)}>
                                 <img src={p.image} alt="Produto" />
                                 {p.name}
                                 <div>R${p.price}</div>

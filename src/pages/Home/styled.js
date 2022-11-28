@@ -22,7 +22,7 @@ export const ContainerHomePage = styled.div`
 export const ContainerHighlights = styled.div`
     width: 100%;
     height: 300px;
-    margin-top: 30px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;

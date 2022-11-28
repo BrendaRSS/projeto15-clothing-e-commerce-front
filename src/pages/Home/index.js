@@ -39,6 +39,7 @@ import colecaop from "../../assets/images/colecaoesp.jpg";
 import colecaoesporte from "../../assets/images/colecaoesporte.jpg";
 import Footer from "../../components/Footer";
 import Promotions from "../../components/Promotions";
+import Header from '../../components/Header';
 
 export default function HomePage() {
     const {
@@ -53,11 +54,11 @@ export default function HomePage() {
             }
         }
 
-        axios.get("http://localhost:5000/categories", config)
+        axios.get("http://localhost:5000/inventory", config)
         .then((resposta)=> {
-            console.log(resposta);
-            setCategorySlected(resposta);
-            // navigate("/category");
+            console.log(resposta.data);
+            setCategorySlected(resposta.data);
+            navigate("/category");
         })
         .catch((error)=>{
             console.log(error.response.data);
@@ -70,6 +71,7 @@ export default function HomePage() {
 
     return (
         <ContainerHomePage>
+            <Header/>
             <Promotions/>
             <ContainerHighlights>
                 <IoIosArrowBack onClick={scrollHorizontally}/>

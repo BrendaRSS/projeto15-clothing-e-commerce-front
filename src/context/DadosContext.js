@@ -9,6 +9,7 @@ export default function ContextProvider({children}){
   const [password, setPassword] = useState("")
   const [token, setToken] = useState("")
   const [categorySlected, setCategorySlected] = useState("")
+  const [categoryInput, setCategoryInput] = useState("")
   
     return (
         <DadosContext.Provider value={{
@@ -17,7 +18,8 @@ export default function ContextProvider({children}){
             email, setEmail,
             password, setPassword,
             token, setToken,
-            categorySlected, setCategorySlected
+            categorySlected, setCategorySlected,
+            categoryInput, setCategoryInput
         }}>{children}</DadosContext.Provider>
     )
 }

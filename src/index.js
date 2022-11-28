@@ -9,6 +9,7 @@ import ContextProvider from "./context/DadosContext";
 import { GlobalStyle } from './globalStyle';
 import Root from './pages/Root';
 import Home from './pages/Home';
+import Category from './pages/Category';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
+      },
+      {
+        path: '/category',
+        element: <Category />
       }
     ]
   }

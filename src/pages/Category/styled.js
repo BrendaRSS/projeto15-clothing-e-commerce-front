@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContainerCategory=styled.div`
     width: 100%;
-    height: 2000px;
+    height: auto;
     background-color: #43122a;
 `
 export const IventarySelected=styled.div`

@@ -54,9 +54,13 @@ export default function HomePage() {
 
         axios.get(process.env.REACT_APP_API_INVENTORY_URI, config)
         .then((resposta)=> {
-            console.log(resposta.data);
-            setCategorySlected(resposta.data);
-            navigate("/category");
+            const products = resposta.data;
+            if(products.length===0){
+                alert("Tente mais tarde. Página ainda em construção!")
+            } else {
+                setCategorySlected(resposta.data);
+                navigate("/category");
+            }
         })
         .catch((error)=>{
             console.log(error.response.data);

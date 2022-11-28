@@ -8,28 +8,53 @@ import logo from "../assets/images/logo.png";
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 
-function categorySelection(category, setCategorySlected, navigate) {
-    const config = {
-        headers: {
-            "categoria": `${category}`
-        }
-    }
-
-    axios.get("http://localhost:5002/inventory", config)
-        .then((resposta) => {
-            console.log(resposta.data);
-            setCategorySlected(resposta.data);
-            navigate("/category");
-        })
-        .catch((error) => {
-            console.log(error.response.data);
-        })
-}
-
 export default function Header({ categories }) {
     const {
         token, name, categoryInput, setCategoryInput, setCategorySlected
     } = useContext(DadosContext);
+    const navigate = useNavigate();
+
+    function categorySelection(category) {
+        const config = {
+            headers: {
+                "categoria": `${category}`
+            }
+        }
+
+        axios.get(process.env.REACT_APP_API_INVENTORY_URI, config)
+            .then((resposta) => {
+                const products=resposta.data;
+                if(products.length===0){
+                    alert("Tente mais tarde. Paǵina em construção!")
+                } else {
+                    setCategorySlected(resposta.data);
+                    navigate("/category");
+                }
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            })
+    }
+
+    function pesquisarCategoria(event){
+        event.preventDefault();
+        const uri = process.env.REACT_APP_API_INVENTORY_URI
+        axios.get(`${uri}?category=${categoryInput}`)
+        .then((resposta)=>{
+            const products = resposta.data;
+            console.log(products)
+            if(products.length===0){
+                alert("Não foi possível fazer esta pesquisa.")
+            } else {
+                setCategorySlected(resposta.data);
+                navigate("/category");
+            }
+        })
+        .catch((error)=>{
+            console.log(error.response.data);
+        })
+
+    }
 
     return (
         <ContainerHeader>
@@ -38,29 +63,32 @@ export default function Header({ categories }) {
                     <img alt="Logo" src={logo} />
                 </Link>
                 <LineDecoration />
-                <BoxInput>
-                    <InputHeader
-                        onChange={e => setCategoryInput(e.target.value)}
-                        value={categoryInput}
-                        type="text"
-                        placeholder="Buscar produtos"
-                        required
-                    />
-                    <ButtonInput>
-                        <HiMagnifyingGlass />
-                    </ButtonInput>
-                </BoxInput>
-                <LoginOrName>{token === "" ? <Link to='/sign-up'>"Entre ou cadastra-se"</Link> : name} <RiShoppingBag3Line /></LoginOrName>
+                <form onSubmit={pesquisarCategoria}>
+                    <BoxInput>
+                        <InputHeader
+                            onChange={e => setCategoryInput(e.target.value)}
+                            value={categoryInput}
+                            type="text"
+                            placeholder="Buscar produtos"
+                            required
+                        />
+                        <ButtonInput 
+                            type="submit">
+                            <HiMagnifyingGlass />
+                        </ButtonInput>
+                    </BoxInput>
+                </form>
+                <LoginOrName>{token === "" ? <Link to='/sign-up'>Entre ou cadastra-se</Link> : name} <Link to={"/cart"}><RiShoppingBag3Line /></Link></LoginOrName>
             </Containerhigher>
             <ContainerCategories>
                 {
                     categories.map(c => {
                         return (
                             <CategoryLink
-                                
+
                                 key={c}
                             >
-                                <Category>
+                                <Category onClick={() => categorySelection(c)}>
                                     {c}
                                 </Category>
                             </CategoryLink>
@@ -124,6 +152,7 @@ justify-content: center;
 border: none;
 background: none;
 transition: .5s;
+cursor: pointer;
 ${BoxInput}:hover & {
                 background-color: #9e5076;
             }
@@ -166,6 +195,10 @@ const LoginOrName = styled.div`
     align-items: center;
     svg{
         width: 25px;
+    }
+    a{
+        text-decoration: none;
+        color: #f9f9f9;
     }
 `
 const ContainerCategories = styled.div`

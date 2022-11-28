@@ -7,7 +7,7 @@ export const ProductContainer = styled.div`
   color: #FFF;
   justify-content: center;
   align-items: center;
-  height: calc(100% - 400px);
+  height: calc(100% - 300px);
 `;
 
 export const ImageContainer = styled.div` 

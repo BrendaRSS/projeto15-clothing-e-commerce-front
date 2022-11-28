@@ -44,7 +44,7 @@ export default function Footer() {
 
 const FooterHomePage = styled.footer`
     width: 100vw;
-    height: 250px;
+    height: 150px;
     background-color: #9e5076;
     box-shadow: -1px -3px 3px -1px rgba(0,0,0,0.75);
     display: flex;
@@ -56,7 +56,7 @@ const Address = styled.div`
     box-sizing: border-box;
     padding: 10px 15px;
     width: 280px;
-    height: 200px;
+    height: 100px;
     font-family: 'Raleway', sans-serif;
     font-size: 15px;
     font-weight: bold;
@@ -68,7 +68,7 @@ const Address = styled.div`
 `
 const Login = styled.div`
     width: 200px;
-    height: 200px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -97,6 +97,6 @@ const Login = styled.div`
     }
 `
 const Logo=styled.img`
-   width: 250px;
+   width: 120px;
    border-radius: 50%;
 `

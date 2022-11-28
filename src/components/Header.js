@@ -1,21 +1,42 @@
 import styled from "styled-components";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+
 import { useContext } from "react";
 import { DadosContext } from "../context/DadosContext";
 import logo from "../assets/images/logo.png";
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { HiMagnifyingGlass } from "react-icons/hi2";
-import { Link } from "react-router-dom";
 
-export default function Header() {
+function categorySelection(category, setCategorySlected, navigate) {
+    const config = {
+        headers: {
+            "categoria": `${category}`
+        }
+    }
+
+    axios.get("http://localhost:5002/inventory", config)
+        .then((resposta) => {
+            console.log(resposta.data);
+            setCategorySlected(resposta.data);
+            navigate("/category");
+        })
+        .catch((error) => {
+            console.log(error.response.data);
+        })
+}
+
+export default function Header({ categories }) {
     const {
-        token, name, categoryInput, setCategoryInput
+        token, name, categoryInput, setCategoryInput, setCategorySlected
     } = useContext(DadosContext);
 
     return (
         <ContainerHeader>
             <Containerhigher>
-               <Link to={"/"}><img alt="Logo" src={logo}/></Link> 
+                <Link to='/'>
+                    <img alt="Logo" src={logo} />
+                </Link>
                 <LineDecoration />
                 <BoxInput>
                     <InputHeader
@@ -29,9 +50,24 @@ export default function Header() {
                         <HiMagnifyingGlass />
                     </ButtonInput>
                 </BoxInput>
-                < LoginOrName>{token === "" ? "Entre ou cadastra-se" : name} <RiShoppingBag3Line /></LoginOrName>
+                <LoginOrName>{token === "" ? <Link to='/sign-up'>"Entre ou cadastra-se"</Link> : name} <RiShoppingBag3Line /></LoginOrName>
             </Containerhigher>
-            <ContainerCategories>Listinha de categoria aqui?</ContainerCategories>
+            <ContainerCategories>
+                {
+                    categories.map(c => {
+                        return (
+                            <CategoryLink
+                                
+                                key={c}
+                            >
+                                <Category>
+                                    {c}
+                                </Category>
+                            </CategoryLink>
+                        );
+                    })
+                }
+            </ContainerCategories>
         </ContainerHeader>
     )
 }
@@ -132,15 +168,33 @@ const LoginOrName = styled.div`
         width: 25px;
     }
 `
-const ContainerCategories=styled.div`
+const ContainerCategories = styled.div`
+    display: flex;
+    flex-direction: row;
     width: 100%;
     height: 50px;
     box-sizing: border-box;
     padding: 10px 15px;
     background-color: #9e5076;
     font-family: 'Raleway', sans-serif;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 400;
     text-align: center;
     color: #f9f9f9;
+    justify-content: center;
 `
+const Category = styled.p`
+    margin: 0 1.4rem 0 0;
+    color: #FFF;
+`;
+
+const CategoryLink = styled.a`
+    text-decoration: none;
+
+    cursor: pointer;
+
+    :hover {
+        text-decoration: underline;
+        text-decoration-color: #FFF;
+    }
+`;

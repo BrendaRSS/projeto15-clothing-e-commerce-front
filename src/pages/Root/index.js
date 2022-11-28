@@ -16,7 +16,7 @@ function Root() {
   
   return (
     <RootContainer>
-      <Header />
+      <Header categories={categories}/>
       <Outlet context={[state, dispatch]} />
       <Footer />
     </RootContainer>

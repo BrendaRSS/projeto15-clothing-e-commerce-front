@@ -52,7 +52,7 @@ export default function HomePage() {
             }
         }
 
-        axios.get("http://localhost:5000/inventory", config)
+        axios.get(process.env.REACT_APP_API_INVENTORY_URI, config)
         .then((resposta)=> {
             console.log(resposta.data);
             setCategorySlected(resposta.data);

@@ -1,5 +1,4 @@
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { DadosContext } from "../../context/DadosContext";
 import {
@@ -13,13 +12,9 @@ import {
 
 export default function Category() {
     const {
-        categorySlected, setCategorySlected
+        categorySlected
     } = useContext(DadosContext);
     const navigate = useNavigate();
-
-    function productSelected(id) {
-        navigate(`/produtos/${id}`);
-    }
 
     return (
         <ContainerCategory>
@@ -29,7 +24,7 @@ export default function Category() {
                 <ContainerProducts>
                     {categorySlected.map((p) => {
                         return (
-                            <Product onClick={() => productSelected(p._id)}>
+                            <Product onClick={() => navigate(`/produtos/${p._id}`)}>
                                 <img src={p.image} alt="Produto" />
                                 {p.name}
                                 <div>R${p.price}</div>

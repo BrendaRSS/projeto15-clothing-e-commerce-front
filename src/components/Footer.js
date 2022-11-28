@@ -3,6 +3,7 @@ import { BiMap } from "react-icons/bi";
 import { useContext } from "react";
 import { DadosContext } from "../context/DadosContext";
 import logo from "../assets/images/logo.png";
+import { signInSubmit } from "../helpers/signInSubmit";
 
 export default function Footer() {
     const {

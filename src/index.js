@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import Product from './pages/Product';
 import { productLoader } from './helpers/productLoader';
 import Category from './pages/Category';
+import Cart from './pages/Cart';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/category',
         element: <Category />
+      },
+      {
+        path: '/cart',
+        element: <Cart/>
       }
     ]
   }

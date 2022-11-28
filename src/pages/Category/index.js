@@ -10,7 +10,6 @@ import {
     ContainerProducts,
     Product
 } from "./styled"
-import Header from '../../components/Header';
 
 export default function Category() {
     const {
@@ -19,12 +18,11 @@ export default function Category() {
     const navigate = useNavigate();
 
     function productSelected(id) {
-        alert(id);
+        navigate(`/produtos/${id}`);
     }
 
     return (
         <ContainerCategory>
-            <Header />
             <IventarySelected>
                 <NameCategory>{categorySlected[0].category}</NameCategory>
                 <LineDecoration />

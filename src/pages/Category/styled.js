@@ -7,7 +7,7 @@ export const ContainerCategory=styled.div`
 `
 export const IventarySelected=styled.div`
     width: 100%;
-    height: 2000px;
+    height: auto;
     display: flex;
     flex-direction: column;
 `
@@ -15,7 +15,7 @@ export const IventarySelected=styled.div`
 export const NameCategory=styled.div`
     width: 100%;
     height: 50px;
-    margin-top: 200px;
+    margin-top: 100px;
     text-align: center;
     font-family: 'Raleway', sans-serif;
     font-size: 30px;
@@ -29,7 +29,7 @@ export const LineDecoration=styled.div`
 `
 export const ContainerProducts=styled.div`
     width: 100%;
-    height: auto;
+    height: 500px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

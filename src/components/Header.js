@@ -5,6 +5,7 @@ import { DadosContext } from "../context/DadosContext";
 import logo from "../assets/images/logo.png";
 import { RiShoppingBag3Line } from "react-icons/ri";
 import { HiMagnifyingGlass } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 
 export default function Header() {
     const {
@@ -14,7 +15,7 @@ export default function Header() {
     return (
         <ContainerHeader>
             <Containerhigher>
-                <img alt="Logo" src={logo} />
+               <Link to={"/"}><img alt="Logo" src={logo}/></Link> 
                 <LineDecoration />
                 <BoxInput>
                     <InputHeader

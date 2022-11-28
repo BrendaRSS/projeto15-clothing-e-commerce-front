@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 export const ContainerHomePage = styled.div`
-    box-sizing: border-box;
     padding: 10px 10px;
     width: 100vw;
-    height: 3000px;
     background-color: #43122a;
     display: flex;
     flex-direction: column;

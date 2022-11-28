@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { signUpSubmit } from "../../helpers/signUpSubmit";
+import { signInSubmit } from "../../helpers/signInSubmit";
 
 import {
-  SignUpContainer,
+  SignInContainer,
   CloseButton
 } from "./styled";
 import {
@@ -12,14 +12,11 @@ import {
 } from "../Form";
 import { useOutletContext } from "react-router-dom";
 
-export default function SignUpModal() {
+export default function SignInModal() {
   const [loadState, dispatch] = useOutletContext();
   const [inputData, setInputData] = useState({
     'E-mail': '',
-    Nome: '',
-    Senha: '',
-    CPF: '',
-    'Ano de nascimento': ''
+    Senha: ''
   });
   const inputState = {
     inputData: inputData,
@@ -28,32 +25,29 @@ export default function SignUpModal() {
   const request = {
     data: {
       email: inputData['E-mail'],
-      name: inputData.Nome,
-      password: inputData.Senha,
-      cpf: inputData.CPF,
-      birth_year: inputData['Ano de nascimento']
+      password: inputData.Senha
     },
-    url: process.env.REACT_APP_API_SIGNUP_URI
+    url: process.env.REACT_APP_API_SIGNIN_URI
   }
 
   return (
-    <SignUpContainer>
+    <SignInContainer>
       <fieldset disabled={loadState.isLoading}>
         <Form
           request={request}
-          submit={signUpSubmit}
+          submit={signInSubmit}
         >
           <CloseButton
-            onClick={() => dispatch({ type: 'CLOSE_SIGNUP_MODAL' })}
+            onClick={() => dispatch({ type: 'CLOSE_SIGNIN_MODAL' })}
           />
           <FormInputs
             state={inputState}
           />
           <FormSubmitButton>
-            Cadastrar
+            Entrar
           </FormSubmitButton>
         </Form>
       </fieldset>
-    </SignUpContainer>
+    </SignInContainer>
   );
 }

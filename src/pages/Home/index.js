@@ -37,7 +37,6 @@ import inf from "../../assets/images/inf.jpg";
 import masculina from "../../assets/images/masculina.jpg";
 import colecaop from "../../assets/images/colecaoesp.jpg";
 import colecaoesporte from "../../assets/images/colecaoesporte.jpg";
-import Footer from "../../components/Footer";
 import Promotions from "../../components/Promotions";
 
 export default function HomePage() {
@@ -114,7 +113,6 @@ export default function HomePage() {
                 <New><img alt="Blusas e Camisetas" src={fem} onClick={()=>categorySelection("Blusas e Camisetas")}/></New>
                 <New><img alt="Blusas e Camisetas" src={inf} onClick={()=>categorySelection("Blusas e Camisetas")}/></New>
             </ContainerNews>
-            <Footer/>
         </ContainerHomePage>
     )
 }

@@ -50,7 +50,6 @@ const FooterHomePage = styled.footer`
     justify-content: space-around;
     align-items: center;
     position: absolute;
-    margin-top: 2750px;
 `
 const Address = styled.div`
     box-sizing: border-box;

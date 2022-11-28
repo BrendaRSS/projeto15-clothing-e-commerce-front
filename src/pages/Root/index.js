@@ -1,34 +1,24 @@
 import { useReducer } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
+import reducer from "../../helpers/reducer";
 
 import { RootContainer } from "./styled";
 import Header from '../../components/Header';
+import Footer from "../../components/Footer";
 
 const initialState = {
-  isLoading: 0
-}
-
-function reducer(state, { type, payload }) {
-  switch (type) {
-    case 'AWAIT_RESPONSE':
-      return (
-        { ...state, isLoading: 1 }
-      );
-    case 'RESPONSE_RESOLVED':
-      return (
-        { ...state, isLoading: 0 }
-      )
-    default:
-      throw new Error();
-  }
+  isLoading: false
 }
 
 function Root() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const categories = useLoaderData();
+  
   return (
     <RootContainer>
       <Header />
       <Outlet context={[state, dispatch]} />
+      <Footer />
     </RootContainer>
   );
 }

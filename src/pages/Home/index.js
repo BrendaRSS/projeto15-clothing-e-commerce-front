@@ -39,7 +39,6 @@ import colecaop from "../../assets/images/colecaoesp.jpg";
 import colecaoesporte from "../../assets/images/colecaoesporte.jpg";
 import Footer from "../../components/Footer";
 import Promotions from "../../components/Promotions";
-import Header from '../../components/Header';
 
 export default function HomePage() {
     const {
@@ -71,7 +70,6 @@ export default function HomePage() {
 
     return (
         <ContainerHomePage>
-            <Header/>
             <Promotions/>
             <ContainerHighlights>
                 <IoIosArrowBack onClick={scrollHorizontally}/>

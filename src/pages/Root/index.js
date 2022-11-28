@@ -1,6 +1,8 @@
 import { useReducer } from "react";
 import { Outlet } from "react-router-dom";
+
 import { RootContainer } from "./styled";
+import Header from '../../components/Header';
 
 const initialState = {
   isLoading: 0
@@ -25,6 +27,7 @@ function Root() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <RootContainer>
+      <Header />
       <Outlet context={[state, dispatch]} />
     </RootContainer>
   );

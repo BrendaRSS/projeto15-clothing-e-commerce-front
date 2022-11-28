@@ -17,8 +17,8 @@ export default function Category() {
         categorySlected, setCategorySlected
     } = useContext(DadosContext);
     const navigate = useNavigate();
-   
-    function productSelected(id){
+
+    function productSelected(id) {
         alert(id);
     }
 
@@ -29,12 +29,15 @@ export default function Category() {
                 <NameCategory>{categorySlected[0].category}</NameCategory>
                 <LineDecoration />
                 <ContainerProducts>
-                    {categorySlected.map((p)=>
-                        <Product onClick={()=>productSelected(p._id)}>
-                            <img src={p.image} alt="Produto" />
-                            {p.name}
-                           <div>R${p.price}</div>
-                        </Product>
+                    {categorySlected.map((p) => {
+                        return (
+                            <Product onClick={() => productSelected(p._id)}>
+                                <img src={p.image} alt="Produto" />
+                                {p.name}
+                                <div>R${p.price}</div>
+                            </Product>
+                        );
+                    }
                     )}
                 </ContainerProducts>
             </IventarySelected>

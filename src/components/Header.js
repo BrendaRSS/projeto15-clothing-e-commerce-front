@@ -44,8 +44,6 @@ const ContainerHeader = styled.div`
     align-items: center;
     background-color: #9e5076;
     box-shadow: -1px 3px 3px -1px rgba(0,0,0,0.75);
-    position: absolute;
-    top: 0;
 `
 const Containerhigher = styled.div`
     width: 100%;
